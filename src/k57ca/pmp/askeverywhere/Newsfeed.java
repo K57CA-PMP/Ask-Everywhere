@@ -1,13 +1,10 @@
 package k57ca.pmp.askeverywhere;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 @SuppressLint("NewApi")
@@ -27,11 +23,14 @@ public class Newsfeed extends Activity {
 		setContentView(R.layout.activity_newsfeed);
 		
 		final ListView listview = (ListView) findViewById(R.id.list_view);
-	    String[] values = new String[] { "Stack Overflow", "Quora" };
+	    String[] values = new String[] { "Stack Overflow", "Quora", "Stack Overflow", 
+	    				"ABC", "XYZ", "Stack Overflow", "Stack Overflow", "Question1", 
+	    				"Stack Overflow", "Stack Overflow", "Stack Overflow",
+	    				"Question2", "Question3", "Stack Overflow" };
 
 	    final ArrayList<String> list = new ArrayList<String>();
 	    for (int i = 0; i < values.length; ++i) {
-	      list.add(values[i]);
+	    	list.add(values[i]);
 	    }
 	    final MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(this, values);
 	    listview.setAdapter(adapter);
@@ -42,7 +41,7 @@ public class Newsfeed extends Activity {
 	      public void onItemClick(AdapterView<?> parent, final View view,
 	          int position, long id) {
 	    	  final String item = (String) parent.getItemAtPosition(position);
-	    	  view.animate().setDuration(2000).alpha(0).withEndAction(new Runnable() {
+	    	  view.animate().setDuration(1000).alpha(0).withEndAction(new Runnable() {
 	              @Override
 	              public void run() {
 	                list.remove(item);
@@ -60,29 +59,7 @@ public class Newsfeed extends Activity {
 		}
 	}
 
-	  private class StableArrayAdapter extends ArrayAdapter<String> {
 
-		  HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-		  public StableArrayAdapter(Context context, int textViewResourceId, List<String> objects) {
-			  super(context, textViewResourceId, objects);
-		      for (int i = 0; i < objects.size(); ++i) {
-		        mIdMap.put(objects.get(i), i);
-		      }
-		  }
-
-		  @Override
-		  public long getItemId(int position) {
-			  String item = getItem(position);
-		      return mIdMap.get(item);
-		  }
-
-		  @Override
-		  public boolean hasStableIds() {
-			  return true;
-		  }
-
-}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -33,6 +33,8 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
     } else {
       imageView.setImageResource(R.drawable.quora);
     }
+    
+    
 
     return rowView;
   }

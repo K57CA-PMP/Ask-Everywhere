@@ -124,6 +124,7 @@ public class Newsfeed extends Activity
 		int base = Menu.FIRST;
 		MenuItem search = menu.add(base, 1, 1, "Search");
 		MenuItem addQuestion = menu.add(base, 2, 2, "Add question");
+		MenuItem help = menu.add(base, 3, 3, "Help");
         return true;
     }
 
@@ -136,6 +137,8 @@ public class Newsfeed extends Activity
         case 1:
         	break;
         case 2:
+        	break;
+        case 3:
         	break;
         default:
         	return super.onOptionsItemSelected(item);
@@ -173,7 +176,7 @@ public class Newsfeed extends Activity
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_newsfeed, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+//            textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
 

@@ -5,12 +5,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_newsfeed">Newsfeed</string>
-    <string name="title_activity_checkin_list">CheckinList</string>
-    <string name="title_activity_newsfeed_temp">NewsfeedTemp</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-    <string name="title_section4">Section 4</string>
+    <string name="title_section1">User Profile</string>
+    <string name="title_section2">All Sites</string>
+    <string name="title_section3">Stack Overflow</string>
+    <string name="title_section4">Quora</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

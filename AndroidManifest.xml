@@ -30,6 +30,10 @@
             android:name="k57ca.pmp.askeverywhere.CheckinList"
             android:label="@string/title_activity_checkin_list" >
         </activity>
+        <activity
+            android:name="k57ca.pmp.askeverywhere.NewsfeedTemp"
+            android:label="@string/title_activity_newsfeed_temp" >
+        </activity>
     </application>
 
 </manifest>

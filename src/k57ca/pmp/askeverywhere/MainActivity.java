@@ -28,6 +28,7 @@ public class MainActivity extends Activity {
 		int base = Menu.FIRST;
 		MenuItem newsfeed = menu.add(base, 1, 1, "Newsfeed");
 		MenuItem search = menu.add(base, 2, 2, "Google");
+		MenuItem temp = menu.add(base, 3, 3, "Temp");
 		return true;
 	}
 
@@ -42,6 +43,9 @@ public class MainActivity extends Activity {
 			break;
 		case 2:
 			IntentsUtils.invokeWebBrowser(this);
+			break;
+		case 3:
+			IntentsUtils.temp(this);
 			break;
 		default:
 			return super.onOptionsItemSelected(item);

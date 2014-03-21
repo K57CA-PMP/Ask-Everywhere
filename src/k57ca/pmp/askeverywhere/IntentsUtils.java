@@ -15,9 +15,4 @@ public class IntentsUtils {
 		intent.setData(Uri.parse("http://www.google.com.vn")); 
 		activity.startActivity(intent); 
 	}
-	
-	public static void temp(Activity activity) {
-		Intent intent = new Intent(activity, NewsfeedTemp.class);
-		activity.startActivity(intent);
-	}
 }

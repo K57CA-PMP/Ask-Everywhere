@@ -120,15 +120,11 @@ public class Newsfeed extends Activity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            // Only show items in the action bar relevant to this screen
-            // if the drawer is not showing. Otherwise, let the drawer
-            // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.newsfeed_temp, menu);
-            restoreActionBar();
-            return true;
-        }
-        return super.onCreateOptionsMenu(menu);
+    	super.onCreateOptionsMenu(menu);
+		int base = Menu.FIRST;
+		MenuItem search = menu.add(base, 1, 1, "Search");
+		MenuItem addQuestion = menu.add(base, 2, 2, "Add question");
+        return true;
     }
 
     @Override
@@ -136,11 +132,15 @@ public class Newsfeed extends Activity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+        case 1:
+        	break;
+        case 2:
+        	break;
+        default:
+        	return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     /**

@@ -26,7 +26,12 @@ public class Newsfeed extends Activity {
 	    String[] values = new String[] { "Stack Overflow", "Quora", "Stack Overflow", 
 	    				"ABC", "XYZ", "Stack Overflow", "Stack Overflow", "Question1", 
 	    				"Stack Overflow", "Stack Overflow", "Stack Overflow",
-	    				"Question2", "Question3", "Stack Overflow" };
+	    				"Question2", "Android/Eclipse: how can I add an image in the res/drawable folder?",
+	    				"Can The Android drawable directory contain subdirectories?",
+	    				"In the Android SDK documentation, all of the examples used with the " +
+	    				"@drawable/my_image xml syntax directly address images that are stored in" +
+	    				" the res/drawable directory in my project.",
+	    				"Stack Overflow" };
 
 	    final ArrayList<String> list = new ArrayList<String>();
 	    for (int i = 0; i < values.length; ++i) {

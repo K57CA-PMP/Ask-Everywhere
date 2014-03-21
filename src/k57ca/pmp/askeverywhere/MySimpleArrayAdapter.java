@@ -28,11 +28,11 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
     textView.setText(values[position]);
     // change the icon for Windows and iPhone
     String s = values[position];
-//    if (s.startsWith("iPhone")) {
-//      imageView.setImageResource(R.drawable.no);
-//    } else {
-//      imageView.setImageResource(R.drawable.ok);
-//    }
+    if (s.startsWith("Stack Overflow")) {
+      imageView.setImageResource(R.drawable.sof);
+    } else {
+      imageView.setImageResource(R.drawable.quora);
+    }
 
     return rowView;
   }

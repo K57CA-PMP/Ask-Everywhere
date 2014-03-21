@@ -27,11 +27,7 @@ public class Newsfeed extends Activity {
 		setContentView(R.layout.activity_newsfeed);
 		
 		final ListView listview = (ListView) findViewById(R.id.list_view);
-	    String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-	        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-	        "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-	        "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-	        "Android", "iPhone", "WindowsMobile" };
+	    String[] values = new String[] { "Stack Overflow", "Quora" };
 
 	    final ArrayList<String> list = new ArrayList<String>();
 	    for (int i = 0; i < values.length; ++i) {

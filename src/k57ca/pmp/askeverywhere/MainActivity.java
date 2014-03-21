@@ -2,14 +2,13 @@ package k57ca.pmp.askeverywhere;
 
 import java.util.ArrayList;
 import java.util.HashMap;
- 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
- 
+
 import android.app.ListActivity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +27,7 @@ public class MainActivity extends ListActivity {
     private ProgressDialog pDialog;
  
     // URL to get contacts JSON
-    private static String url = "http://api.androidhive.info/contacts/";
+    private static String url = "http://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow";
  
     // JSON Node names
     private static final String TAG_CONTACTS = "contacts";
@@ -41,19 +40,23 @@ public class MainActivity extends ListActivity {
     private static final String TAG_PHONE_MOBILE = "mobile";
     private static final String TAG_PHONE_HOME = "home";
     private static final String TAG_PHONE_OFFICE = "office";
+    
+    private static final String TAG_ITEMS = "items";
+    private static final String TAG_TITLE = "title";
+    private static final String TAG_LINK = "link";
  
     // contacts JSONArray
-    JSONArray contacts = null;
+    JSONArray items = null;
  
     // Hashmap for ListView
-    ArrayList<HashMap<String, String>> contactList;
+    ArrayList<HashMap<String, String>> itemList;
  
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
  
-        contactList = new ArrayList<HashMap<String, String>>();
+        itemList = new ArrayList<HashMap<String, String>>();
  
         ListView lv = getListView();
  
@@ -109,35 +112,24 @@ public class MainActivity extends ListActivity {
                     JSONObject jsonObj = new JSONObject(jsonStr);
                      
                     // Getting JSON Array node
-                    contacts = jsonObj.getJSONArray(TAG_CONTACTS);
+                    items = jsonObj.getJSONArray(TAG_ITEMS);
  
                     // looping through All Contacts
-                    for (int i = 0; i < contacts.length(); i++) {
-                        JSONObject c = contacts.getJSONObject(i);
+                    for (int i = 0; i < items.length(); i++) {
+                        JSONObject q = items.getJSONObject(i);
                          
-                        String id = c.getString(TAG_ID);
-                        String name = c.getString(TAG_NAME);
-                        String email = c.getString(TAG_EMAIL);
-                        String address = c.getString(TAG_ADDRESS);
-                        String gender = c.getString(TAG_GENDER);
- 
-                        // Phone node is JSON Object
-                        JSONObject phone = c.getJSONObject(TAG_PHONE);
-                        String mobile = phone.getString(TAG_PHONE_MOBILE);
-                        String home = phone.getString(TAG_PHONE_HOME);
-                        String office = phone.getString(TAG_PHONE_OFFICE);
+                        String title = q.getString(TAG_TITLE);
+                        String link = q.getString(TAG_LINK);
  
                         // tmp hashmap for single contact
-                        HashMap<String, String> contact = new HashMap<String, String>();
+                        HashMap<String, String> item = new HashMap<String, String>();
  
                         // adding each child node to HashMap key => value
-                        contact.put(TAG_ID, id);
-                        contact.put(TAG_NAME, name);
-                        contact.put(TAG_EMAIL, email);
-                        contact.put(TAG_PHONE_MOBILE, mobile);
- 
+                        item.put(TAG_TITLE, title);
+                        item.put(TAG_LINK, link);
+  
                         // adding contact to contact list
-                        contactList.add(contact);
+                        itemList.add(item);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -159,16 +151,14 @@ public class MainActivity extends ListActivity {
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    MainActivity.this, contactList,
-                    R.layout.list_item, new String[] { TAG_NAME, TAG_EMAIL,
-                            TAG_PHONE_MOBILE }, new int[] { R.id.name,
-                            R.id.email, R.id.mobile });
+                    MainActivity.this, itemList,
+                    R.layout.question, new String[] { TAG_TITLE, TAG_LINK },
+                    			new int[] { R.id.title, R.id.label});
  
             setListAdapter(adapter);
         }
  
     }
- 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	super.onCreateOptionsMenu(menu);

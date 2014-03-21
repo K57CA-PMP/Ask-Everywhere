@@ -1,8 +1,10 @@
 package k57ca.pmp.askeverywhere;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.zip.GZIPInputStream;
  
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,6 +14,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.entity.HttpEntityWrapper;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
  
@@ -47,7 +50,7 @@ public class ServiceHandler {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpEntity httpEntity = null;
             HttpResponse httpResponse = null;
-             
+            
             // Checking http request method type
             if (method == POST) {
                 HttpPost httpPost = new HttpPost(url);
@@ -70,7 +73,7 @@ public class ServiceHandler {
                 httpResponse = httpClient.execute(httpGet);
  
             }
-            httpEntity = httpResponse.getEntity();
+            httpEntity = new GzipDecompressingEntity(httpResponse.getEntity());
             response = EntityUtils.toString(httpEntity);
  
         } catch (UnsupportedEncodingException e) {
@@ -83,5 +86,24 @@ public class ServiceHandler {
          
         return response;
  
+    }
+    
+    static class GzipDecompressingEntity extends HttpEntityWrapper {
+        public GzipDecompressingEntity(final HttpEntity entity) {
+           super(entity);
+        }
+
+        @Override
+        public InputStream getContent() throws IOException, IllegalStateException {
+           // the wrapped entity's getContent() decides about repeatability
+           InputStream wrappedin = wrappedEntity.getContent();
+           return new GZIPInputStream(wrappedin);
+        }
+
+        @Override
+        public long getContentLength() {
+           // length of ungzipped content is not known
+           return -1;
+        }
     }
 }

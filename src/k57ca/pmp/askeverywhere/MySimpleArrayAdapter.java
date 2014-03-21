@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 public class MySimpleArrayAdapter extends ArrayAdapter<String> {
   private final Context context;
-  private final String[] values;
+  private final String[] titles;
 
-  public MySimpleArrayAdapter(Context context, String[] values) {
-    super(context, R.layout.question, values);
+  public MySimpleArrayAdapter(Context context, String[] titles) {
+    super(context, R.layout.question, titles);
     this.context = context;
-    this.values = values;
+    this.titles = titles;
   }
 
   @Override
@@ -23,16 +23,17 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
     LayoutInflater inflater = (LayoutInflater) context
         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     View rowView = inflater.inflate(R.layout.question, parent, false);
-    TextView textView = (TextView) rowView.findViewById(R.id.label);
+    TextView title = (TextView) rowView.findViewById(R.id.title);
     ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-    textView.setText(values[position]);
+    title.setText(titles[position]);
+    imageView.setImageResource(R.drawable.sof_black);
     // change the icon for Windows and iPhone
-    String s = values[position];
-    if (s.startsWith("Stack Overflow")) {
-      imageView.setImageResource(R.drawable.sof_black);
-    } else {
-      imageView.setImageResource(R.drawable.quora);
-    }
+//    String s = titles[position];
+//    if (s.startsWith("Stack Overflow")) {
+//      imageView.setImageResource(R.drawable.sof_black);
+//    } else {
+//      imageView.setImageResource(R.drawable.quora);
+//    }
     
     
 

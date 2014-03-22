@@ -29,7 +29,10 @@
             android:name="k57ca.pmp.askeverywhere.Newsfeed"
             android:label="@string/title_activity_newsfeed" >
         </activity>
-       
+       <activity
+            android:name="k57ca.pmp.askeverywhere.AnswerActivity"
+            android:label="@string/title_activity_answer" >
+        </activity>
         <!-- Single List Item Activity -->
         <activity
             android:label="Contact"

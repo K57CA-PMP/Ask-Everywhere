@@ -80,6 +80,7 @@ public class Newsfeed extends Activity
 	                list.remove(item);
 	                adapter.notifyDataSetChanged();
 	                view.setAlpha(1);
+	                IntentsUtils.startAnswerActivity(Newsfeed.this);
 	              }
 	          });
 	      }

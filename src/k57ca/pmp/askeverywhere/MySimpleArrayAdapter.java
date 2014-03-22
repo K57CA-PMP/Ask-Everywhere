@@ -1,6 +1,7 @@
 package k57ca.pmp.askeverywhere;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 public class MySimpleArrayAdapter extends ArrayAdapter<String> {
   private final Context context;
   private final String[] titles;
+  private final String[] bodys = MainActivity.bodys;
 
   public MySimpleArrayAdapter(Context context, String[] titles) {
     super(context, R.layout.question, titles);
@@ -24,12 +26,13 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     View rowView = inflater.inflate(R.layout.question, parent, false);
     TextView title = (TextView) rowView.findViewById(R.id.title);
+    TextView body = (TextView) rowView.findViewById(R.id.body);
     ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
     title.setText(titles[position]);
-//    imageView.setImageResource(R.drawable.sof_black);
-    // change the icon for Windows and iPhone
-    String s = titles[position];
-    if (s.startsWith("Stack Overflow")) {
+    body.setText(Html.fromHtml(bodys[position]));
+    // random icon
+    int x = (int)(Math.random() * 2) + 1;;
+    if (x == 1) {
       imageView.setImageResource(R.drawable.sof_black);
     } else {
       imageView.setImageResource(R.drawable.quora);

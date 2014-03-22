@@ -29,7 +29,7 @@ public class MainActivity extends ListActivity {
     private ProgressDialog pDialog;
  
     // URL to get contacts JSON
-    private static String url = "http://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow";
+    private static String url = "http://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=withBody";
  
     // JSON Node names
     private static final String TAG_CONTACTS = "contacts";
@@ -46,12 +46,17 @@ public class MainActivity extends ListActivity {
     private static final String TAG_ITEMS = "items";
     private static final String TAG_TITLE = "title";
     private static final String TAG_LINK = "link";
+    private static final String TAG_BODY = "body";
  
     // contacts JSONArray
     JSONArray items = null;
  
     // Hashmap for ListView
-    ArrayList<HashMap<String, String>> itemList;
+    public ArrayList<HashMap<String, String>> itemList;
+    
+    public static String[] titles = new String[30];
+    public static String[] bodys = new String[30];
+    int index = 0;
  
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,7 +76,7 @@ public class MainActivity extends ListActivity {
                 // getting values from selected ListItem
                 String title = ((TextView) view.findViewById(R.id.title))
                         .getText().toString();
-                String description = ((TextView) view.findViewById(R.id.label))
+                String description = ((TextView) view.findViewById(R.id.body))
                         .getText().toString();
   	    	  view.animate().setDuration(1000).alpha(0).withEndAction(new Runnable() {
 	              @Override
@@ -128,16 +133,13 @@ public class MainActivity extends ListActivity {
                          
                         String title = q.getString(TAG_TITLE);
                         String link = q.getString(TAG_LINK);
- 
-                        // tmp hashmap for single contact
-                        HashMap<String, String> item = new HashMap<String, String>();
- 
-                        // adding each child node to HashMap key => value
-                        item.put(TAG_TITLE, title);
-                        item.put(TAG_LINK, link);
-  
-                        // adding contact to contact list
-                        itemList.add(item);
+                        String body = q.getString(TAG_BODY);
+                        titles[index] = title;
+                        bodys[index] = body;
+                        
+                        Log.d(title, body);
+                        
+                        index++;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -161,7 +163,7 @@ public class MainActivity extends ListActivity {
             ListAdapter adapter = new SimpleAdapter(
                     MainActivity.this, itemList,
                     R.layout.question, new String[] { TAG_TITLE, TAG_LINK },
-                    			new int[] { R.id.title, R.id.label});
+                    			new int[] { R.id.title, R.id.body});
  
             setListAdapter(adapter);
         }

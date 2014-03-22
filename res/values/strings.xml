@@ -12,5 +12,17 @@
     <string name="title_activity_add_connections">AddConnections</string>
     <string name="log_in_with_stackexchange">Stack Exchange</string>
     <string name="title_activity_user_profile">UserProfile</string>
+    <string name="title_activity_newsfeed">Newsfeed</string>
+    <string name="user_profile">User Profile</string>
+    <string name="all_sites">All Sites</string>
+    <string name="stack_overflow">Stack Overflow</string>
+    <string name="quora">Quora</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="user_name">Wayne Rooney</string>
+    <string name="user_email">rooney@gmail.com</string>
+    <string name="answers_act">You have answered 25 questions</string>
+    <string name="questions_act">You have asked 14 questions</string>
 
 </resources>

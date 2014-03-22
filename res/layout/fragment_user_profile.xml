@@ -6,11 +6,113 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="k57ca.pmp.askeverywhere.UserProfile$PlaceholderFragment" >
+    tools:context="k57ca.pmp.askeverywhere.UserProfileActivity$PlaceholderFragment" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_marginTop="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/quora" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:layout_weight="0.3"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:text="@string/user_name"
+                android:textColor="@color/blue"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.56"
+                android:layout_marginLeft="25dp"
+                android:text="@string/user_email"
+                android:textColor="@color/gray"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/linearLayout1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/recent_act"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal|center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="40dp"
+            android:text="Recent activities"
+            android:textColor="@color/maroon"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/answers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Answers"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
+        
+        <TextView
+            android:id="@+id/answers_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/answers_act"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/gray"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/questions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Questions"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
+        
+        <TextView
+            android:id="@+id/questions_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/questions_act"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/gray"
+            android:textSize="15sp" />
+        
+    </LinearLayout>
 
 </RelativeLayout>

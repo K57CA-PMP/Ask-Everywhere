@@ -4,6 +4,13 @@
     <string name="app_name">Ask EveryWhere</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="Log_in_with_Google">Log in with Google</string>   
+    <string name="Log_in_with_Google">Log in with Google</string>
+    <string name="title_activity_add_more_account">AddMoreAccount</string>
+    <string name="title_activity_facebook_log_in">FacebookLogIn</string>
+    <string name="facebook_app_id">444612855669541</string>
+    <string name="log_in_with_facebook">Connect with facebook account</string>
+    <string name="title_activity_add_connections">AddConnections</string>
+    <string name="log_in_with_stackexchange">Stack Exchange</string>
+    <string name="title_activity_user_profile">UserProfile</string>
 
 </resources>

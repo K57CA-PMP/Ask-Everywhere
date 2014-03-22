@@ -40,7 +40,8 @@ public class AuthActivity extends Activity {
  
 	private void doCoolAuthenticatedStuff() {
 		// TODO: insert cool stuff with authPreferences.getToken()
- 
+		//startActivity(new Intent(this, UserProfile.class));
+		startActivity(new Intent(this, AddConnections.class));
 		Log.e("AuthApp", authPreferences.getToken());
 	}
  

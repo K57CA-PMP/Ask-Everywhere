@@ -7,10 +7,10 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
-    
+
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
     <application
         android:allowBackup="true"
@@ -26,16 +26,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-         <activity
+        <activity
             android:name="k57ca.pmp.askeverywhere.LogInActivity"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="k57ca.pmp.askeverywhere.AuthActivity"
             android:label="@string/app_name" >
         </activity>
-        
-    </application>
+        <activity
+            android:name="k57ca.pmp.askeverywhere.UserProfile"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="k57ca.pmp.askeverywhere.AddMoreAccount"
+            android:label="@string/title_activity_add_more_account" >
+        </activity>
+        <activity
+            android:name="k57ca.pmp.askeverywhere.FacebookLogIn"
+            android:label="@string/title_activity_facebook_log_in" >
+        </activity>
 
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="k57ca.pmp.askeverywhere.AddConnections"
+            android:label="@string/title_activity_add_connections" >
+        </activity>                    
+    </application>  
 </manifest>

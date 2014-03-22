@@ -34,7 +34,9 @@ public class Newsfeed extends Activity
     private CharSequence mTitle;
     private ListView listview;
     private MySimpleArrayAdapter adapter;
-
+    boolean checkFirstTime = true;
+	int[] icons = MainActivity.icons;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,31 +82,33 @@ public class Newsfeed extends Activity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
-    	int[] icons = MainActivity.icons;
     	ImageView icon = (ImageView) findViewById(R.id.icon);
     	switch (position) {
     	case 0:
-    		IntentsUtils.userProfile(this);
+    		if (!checkFirstTime) {
+    			IntentsUtils.userProfile(this);
+    		}
     		break;
     	case 1:
     		for (int i = 0; i < 30; i++) {
     			icons[i] = (int)(Math.random() * 2) + 1;
     		}
     		listview.setAdapter(adapter);
+    		checkFirstTime = false;
     		break;
     	case 2:
     		for (int i = 0; i < 30; i++) {
     			icons[i] = 1;
     		}
     		listview.setAdapter(adapter);
-//            icon.setImageResource(R.drawable.sof_black);
+    		checkFirstTime = false;
     		break;
     	case 3:
     		for (int i = 0; i < 30; i++) {
     			icons[i] = 2;
     		}
     		listview.setAdapter(adapter);
-//        	icon.setImageResource(R.drawable.quora);
+    		checkFirstTime = false;
     		break;
     	default:
     		break;
@@ -210,4 +214,10 @@ public class Newsfeed extends Activity
         }
     }
 
+    @Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	checkFirstTime = false;
+    }
 }

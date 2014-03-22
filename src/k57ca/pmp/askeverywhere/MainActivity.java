@@ -1,5 +1,10 @@
 package k57ca.pmp.askeverywhere;
 
+import android.accounts.AccountManager;
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.content.Intent;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,13 +21,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
- 
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.os.Build;
+
 @SuppressLint("NewApi")
 public class MainActivity extends ListActivity {
  
@@ -30,18 +33,6 @@ public class MainActivity extends ListActivity {
  
     // URL to get contacts JSON
     private static String url = "http://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=withBody";
- 
-    // JSON Node names
-    private static final String TAG_CONTACTS = "contacts";
-    private static final String TAG_ID = "id";
-    private static final String TAG_NAME = "name";
-    private static final String TAG_EMAIL = "email";
-    private static final String TAG_ADDRESS = "address";
-    private static final String TAG_GENDER = "gender";
-    private static final String TAG_PHONE = "phone";
-    private static final String TAG_PHONE_MOBILE = "mobile";
-    private static final String TAG_PHONE_HOME = "home";
-    private static final String TAG_PHONE_OFFICE = "office";
     
     private static final String TAG_ITEMS = "items";
     private static final String TAG_TITLE = "title";
@@ -56,12 +47,15 @@ public class MainActivity extends ListActivity {
     
     public static String[] titles = new String[30];
     public static String[] bodies = new String[30];
+    public static int[] icons = new int[30];
     int index = 0;
  
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        IntentsUtils.LogIn(this);
  
         // Calling async task to get json
         new GetQuestions().execute();
@@ -109,8 +103,11 @@ public class MainActivity extends ListActivity {
                         String body = q.getString(TAG_BODY);
                         titles[index] = title;
                         bodies[index] = body;
+                        titles[index] = q.getString(TAG_TITLE);
+                        bodies[index] = q.getString(TAG_BODY);
+                        icons[index] = (int)(Math.random() * 2) + 1;
                         
-                        Log.d(title, body);
+                        Log.d(titles[index], bodies[index]);
                         
                         index++;
                     }
@@ -141,7 +138,7 @@ public class MainActivity extends ListActivity {
     	super.onCreateOptionsMenu(menu);
 		int base = Menu.FIRST;
 		MenuItem search = menu.add(base, 1, 1, "Newsfeed");
-//		MenuItem addQuestion = menu.add(base, 2, 2, "Add question");
+		MenuItem login = menu.add(base, 2, 2, "Login");
 //		MenuItem help = menu.add(base, 3, 3, "Help");
         return true;
     }
@@ -156,6 +153,7 @@ public class MainActivity extends ListActivity {
         	IntentsUtils.newsfeed(this);
         	break;
         case 2:
+        	IntentsUtils.LogIn(this);
         	break;
         case 3:
         	break;
@@ -166,3 +164,4 @@ public class MainActivity extends ListActivity {
     }
     
 }
+

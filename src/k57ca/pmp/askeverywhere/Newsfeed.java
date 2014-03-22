@@ -3,22 +3,19 @@ package k57ca.pmp.askeverywhere;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,7 +32,11 @@ public class Newsfeed extends Activity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
-
+    private ListView listview;
+    private MySimpleArrayAdapter adapter;
+    boolean checkFirstTime = true;
+	int[] icons = MainActivity.icons;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,13 +51,13 @@ public class Newsfeed extends Activity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         
-		final ListView listview = (ListView) findViewById(R.id.list_view);
+		listview = (ListView) findViewById(R.id.list_view);
 		String[] titles = MainActivity.titles;
 	    final ArrayList<String> list = new ArrayList<String>();
 	    for (int i = 0; i < titles.length; ++i) {
 	    	list.add(titles[i]);
 	    }
-	    final MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(this, titles);
+	    adapter = new MySimpleArrayAdapter(this, titles);
 	    listview.setAdapter(adapter);
 
 	    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -83,6 +84,37 @@ public class Newsfeed extends Activity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
+    	ImageView icon = (ImageView) findViewById(R.id.icon);
+    	switch (position) {
+    	case 0:
+    		if (!checkFirstTime) {
+    			IntentsUtils.userProfile(this);
+    		}
+    		break;
+    	case 1:
+    		for (int i = 0; i < 30; i++) {
+    			icons[i] = (int)(Math.random() * 2) + 1;
+    		}
+    		listview.setAdapter(adapter);
+    		checkFirstTime = false;
+    		break;
+    	case 2:
+    		for (int i = 0; i < 30; i++) {
+    			icons[i] = 1;
+    		}
+    		listview.setAdapter(adapter);
+    		checkFirstTime = false;
+    		break;
+    	case 3:
+    		for (int i = 0; i < 30; i++) {
+    			icons[i] = 2;
+    		}
+    		listview.setAdapter(adapter);
+    		checkFirstTime = false;
+    		break;
+    	default:
+    		break;
+    	}
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
@@ -92,14 +124,17 @@ public class Newsfeed extends Activity
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = getString(R.string.user_profile);
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                mTitle = getString(R.string.all_sites);
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                mTitle = getString(R.string.stack_overflow);
                 break;
+            case 4:
+            	mTitle = getString(R.string.quora);
+            	break;
         }
     }
 
@@ -181,4 +216,10 @@ public class Newsfeed extends Activity
         }
     }
 
+    @Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	checkFirstTime = false;
+    }
 }

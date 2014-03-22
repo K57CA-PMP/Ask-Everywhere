@@ -21,4 +21,24 @@ public class IntentsUtils {
 		intent.putExtra("position", position);
 		activity.startActivity(intent); 
 	}
+
+	public static void userProfile(Activity activity) {
+		Intent intent = new Intent(activity, UserProfileActivity.class);
+		activity.startActivity(intent); 
+	}
+	
+	public static void LogIn(Activity activity) {
+		Intent intent = new Intent(activity, LogInActivity.class);
+		activity.startActivity(intent);
+	}
+	
+	public static void LogInGoogle(Activity activity) {
+		Intent intent = new Intent(activity, AuthActivity.class);
+		activity.startActivity(intent);
+	}
+	
+	public static void AddConnections(Activity activity) {
+		Intent intent = new Intent(activity, AddConnections.class);
+		activity.startActivity(intent);
+	}
 }

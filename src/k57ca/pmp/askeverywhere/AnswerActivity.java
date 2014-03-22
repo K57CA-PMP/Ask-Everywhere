@@ -17,12 +17,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class AnswerActivity extends Activity implements ActionBar.TabListener {
 
-	static String title = null;
-	static String body = null;
+	static String[] titles = MainActivity.titles;
+	static String[] bodies = MainActivity.bodies;
+	static int value = 0;
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a {@link FragmentPagerAdapter}
@@ -77,8 +80,7 @@ public class AnswerActivity extends Activity implements ActionBar.TabListener {
 		}
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
-			title = extras.getString("title");
-		    body = extras.getString("body");
+		    value = extras.getInt("position");
 		}
 	}
 
@@ -190,12 +192,24 @@ public class AnswerActivity extends Activity implements ActionBar.TabListener {
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_answer,
 					container, false);
-			TextView textView = (TextView) rootView
+			TextView webView = (TextView) rootView
 					.findViewById(R.id.section_label_answer);
-			textView.setText(Integer.toString(getArguments().getInt(
-					ARG_SECTION_NUMBER)));
+			TextView textTitle = (TextView) rootView.findViewById(R.id.ans_title);
+//			textView.setText(Integer.toString(getArguments().getInt(
+//					ARG_SECTION_NUMBER)));
 			if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
-				textView.setText(Html.fromHtml(body));
+				textTitle.setText(titles[value]);
+				String content = 
+					       "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"+
+					       "<html><head>"+
+					       "<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />"+
+					       "<head><body>";
+
+					content += bodies[value] + "</body></html>";
+//					webView.loadData(content, "text/html; charset=utf-8", "UTF-8");
+					webView.setText(Html.fromHtml(content));
+			} else {
+//				textView.setText()
 			}
 			
 			return rootView;

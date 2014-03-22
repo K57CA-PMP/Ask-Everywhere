@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class MySimpleArrayAdapter extends ArrayAdapter<String> {
   private final Context context;
   private final String[] titles;
-  private final String[] bodys = MainActivity.bodys;
+  private final String[] bodys = MainActivity.bodies;
 
   public MySimpleArrayAdapter(Context context, String[] titles) {
     super(context, R.layout.question, titles);

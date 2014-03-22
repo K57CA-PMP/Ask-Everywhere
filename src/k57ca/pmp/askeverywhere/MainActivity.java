@@ -55,7 +55,7 @@ public class MainActivity extends ListActivity {
     public ArrayList<HashMap<String, String>> itemList;
     
     public static String[] titles = new String[30];
-    public static String[] bodys = new String[30];
+    public static String[] bodies = new String[30];
     int index = 0;
  
     @Override
@@ -108,7 +108,7 @@ public class MainActivity extends ListActivity {
                         String link = q.getString(TAG_LINK);
                         String body = q.getString(TAG_BODY);
                         titles[index] = title;
-                        bodys[index] = body;
+                        bodies[index] = body;
                         
                         Log.d(title, body);
                         

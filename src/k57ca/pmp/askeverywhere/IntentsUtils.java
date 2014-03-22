@@ -16,10 +16,9 @@ public class IntentsUtils {
 		activity.startActivity(intent); 
 	}
 	
-	public static void startAnswerActivity(Activity activity, String title, String body){ 
+	public static void startAnswerActivity(Activity activity, int position){ 
 		Intent intent = new Intent(activity, AnswerActivity.class);  
-		intent.putExtra("title", title);
-		intent.putExtra("body", body);
+		intent.putExtra("position", position);
 		activity.startActivity(intent); 
 	}
 }

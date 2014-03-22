@@ -51,21 +51,12 @@ public class Newsfeed extends Activity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         
 		final ListView listview = (ListView) findViewById(R.id.list_view);
-	    String[] values = new String[] { "Stack Overflow", "Quora", "Stack Overflow", 
-	    				"ABC", "XYZ", "Stack Overflow", "Stack Overflow", "Question1", 
-	    				"Stack Overflow", "Stack Overflow", "Stack Overflow",
-	    				"Question2", "Android/Eclipse: how can I add an image in the res/drawable folder?",
-	    				"Can The Android drawable directory contain subdirectories?",
-	    				"In the Android SDK documentation, all of the examples used with the " +
-	    				"@drawable/my_image xml syntax directly address images that are stored in" +
-	    				" the res/drawable directory in my project.",
-	    				"Stack Overflow" };
-
+		String[] titles = MainActivity.titles;
 	    final ArrayList<String> list = new ArrayList<String>();
-	    for (int i = 0; i < values.length; ++i) {
-	    	list.add(values[i]);
+	    for (int i = 0; i < titles.length; ++i) {
+	    	list.add(titles[i]);
 	    }
-	    final MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(this, values);
+	    final MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(this, titles);
 	    listview.setAdapter(adapter);
 
 	    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

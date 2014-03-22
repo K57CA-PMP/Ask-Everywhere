@@ -54,8 +54,8 @@ public class MainActivity extends ListActivity {
     // Hashmap for ListView
     public ArrayList<HashMap<String, String>> itemList;
     
-    public String[] titles = new String[1000];
-    public String[] bodys = new String[1000];
+    public static String[] titles = new String[30];
+    public static String[] bodys = new String[30];
     int index = 0;
  
     @Override
@@ -76,7 +76,7 @@ public class MainActivity extends ListActivity {
                 // getting values from selected ListItem
                 String title = ((TextView) view.findViewById(R.id.title))
                         .getText().toString();
-                String description = ((TextView) view.findViewById(R.id.label))
+                String description = ((TextView) view.findViewById(R.id.body))
                         .getText().toString();
   	    	  view.animate().setDuration(1000).alpha(0).withEndAction(new Runnable() {
 	              @Override
@@ -163,7 +163,7 @@ public class MainActivity extends ListActivity {
             ListAdapter adapter = new SimpleAdapter(
                     MainActivity.this, itemList,
                     R.layout.question, new String[] { TAG_TITLE, TAG_LINK },
-                    			new int[] { R.id.title, R.id.label});
+                    			new int[] { R.id.title, R.id.body});
  
             setListAdapter(adapter);
         }

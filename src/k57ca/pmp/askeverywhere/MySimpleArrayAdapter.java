@@ -28,8 +28,8 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
     title.setText(titles[position]);
 //    imageView.setImageResource(R.drawable.sof_black);
     // change the icon for Windows and iPhone
-    String s = titles[position];
-    if (s.startsWith("Stack Overflow")) {
+    int x = (int)(Math.random() * 2) + 1;;
+    if (x == 1) {
       imageView.setImageResource(R.drawable.sof_black);
     } else {
       imageView.setImageResource(R.drawable.quora);

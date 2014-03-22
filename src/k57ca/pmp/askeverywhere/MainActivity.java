@@ -63,41 +63,14 @@ public class MainActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
  
-        itemList = new ArrayList<HashMap<String, String>>();
- 
-        ListView lv = getListView();
- 
-        // Listview on item click listener
-        lv.setOnItemClickListener(new OnItemClickListener() {
- 
-            @Override
-            public void onItemClick(AdapterView<?> parent, final View view,
-                    int position, long id) {
-                // getting values from selected ListItem
-                String title = ((TextView) view.findViewById(R.id.title))
-                        .getText().toString();
-                String description = ((TextView) view.findViewById(R.id.body))
-                        .getText().toString();
-  	    	  view.animate().setDuration(1000).alpha(0).withEndAction(new Runnable() {
-	              @Override
-	              public void run() {
-//	                list.remove(item);
-//	                adapter.notifyDataSetChanged();
-	                view.setAlpha(1);
-	              }
-	          });
-                Log.d(title, description);
-            }
-        });
- 
         // Calling async task to get json
-        new GetContacts().execute();
+        new GetQuestions().execute();
     }
  
     /**
      * Async task class to get json by making HTTP call
      * */
-    private class GetContacts extends AsyncTask<Void, Void, Void> {
+    private class GetQuestions extends AsyncTask<Void, Void, Void> {
  
         @Override
         protected void onPreExecute() {
@@ -160,12 +133,6 @@ public class MainActivity extends ListActivity {
             /**
              * Updating parsed JSON data into ListView
              * */
-            ListAdapter adapter = new SimpleAdapter(
-                    MainActivity.this, itemList,
-                    R.layout.question, new String[] { TAG_TITLE, TAG_LINK },
-                    			new int[] { R.id.title, R.id.body});
- 
-            setListAdapter(adapter);
         }
  
     }

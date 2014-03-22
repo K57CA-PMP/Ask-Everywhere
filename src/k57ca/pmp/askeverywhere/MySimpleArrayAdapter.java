@@ -12,12 +12,8 @@ import android.widget.TextView;
 public class MySimpleArrayAdapter extends ArrayAdapter<String> {
   private final Context context;
   private final String[] titles;
-<<<<<<< HEAD
-  private final String[] bodys = MainActivity.bodies;
-=======
   private final String[] bodies = MainActivity.bodies;
   private final int[] icons = MainActivity.icons;
->>>>>>> 2-settingUpLogin
 
   public MySimpleArrayAdapter(Context context, String[] titles) {
     super(context, R.layout.question, titles);

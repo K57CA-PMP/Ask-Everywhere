@@ -43,6 +43,7 @@
             android:name="k57ca.pmp.askeverywhere.AddMoreAccount"
             android:label="@string/title_activity_add_more_account" >
         </activity>
+
         <activity
             android:name="k57ca.pmp.askeverywhere.FacebookLogIn"
             android:label="@string/title_activity_facebook_log_in" >

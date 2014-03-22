@@ -206,10 +206,17 @@ public class AnswerActivity extends Activity implements ActionBar.TabListener {
 					       "<head><body>";
 
 					content += bodies[value] + "</body></html>";
-//					webView.loadData(content, "text/html; charset=utf-8", "UTF-8");
 					webView.setText(Html.fromHtml(content));
 			} else {
-//				textView.setText()
+				textTitle.setText(titles[value]);
+				String content = 
+					       "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"+
+					       "<html><head>"+
+					       "<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />"+
+					       "<head><body>";
+
+					content += bodies[value + 1] + "</body></html>";
+					webView.setText(Html.fromHtml(content));
 			}
 			
 			return rootView;

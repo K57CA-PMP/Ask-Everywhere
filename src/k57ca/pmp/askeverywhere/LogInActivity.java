@@ -1,5 +1,6 @@
 package k57ca.pmp.askeverywhere;
 
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.widget.Button;
 
 public class LogInActivity extends Activity {
 		
-	Button Log_in_google; 
+	Button Log_in_google; 		
 	
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);		

@@ -59,7 +59,6 @@ public class AuthActivity extends Activity {
 		for (Account account : accountManager.getAccountsByType("com.google")) {
 			if (account.name.equals(user)) {
 				userAccount = account;
- 
 				break;
 			}
 		}

@@ -1,5 +1,6 @@
 package k57ca.pmp.askeverywhere;
 
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -16,18 +17,18 @@ import android.os.Build;
 
 public class MainActivity extends Activity {
 
+	private AuthPreferences authPreferences;
+	private AccountManager accountManager;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);			
-			
-		if (savedInstanceState != null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
+		if (authPreferences.getUser() != null
+				&& authPreferences.getToken() != null){			
 		} else
 			{
-				startActivity(new Intent(this, LogInActivity.class));
-			}
+			startActivity(new Intent(this, LogInActivity.class));
+		}
 	}	
 
 	@Override
@@ -49,22 +50,4 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
-			return rootView;
-		}
-	}
-
 }

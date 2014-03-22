@@ -11,7 +11,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="6dip"
-        android:background="@drawable/sof_black"
+        android:background="@drawable/ic_launcher"
         android:contentDescription="TODO" />
 
     <TextView

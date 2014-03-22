@@ -26,14 +26,14 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
     TextView title = (TextView) rowView.findViewById(R.id.title);
     ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
     title.setText(titles[position]);
-    imageView.setImageResource(R.drawable.sof_black);
+//    imageView.setImageResource(R.drawable.sof_black);
     // change the icon for Windows and iPhone
-//    String s = titles[position];
-//    if (s.startsWith("Stack Overflow")) {
-//      imageView.setImageResource(R.drawable.sof_black);
-//    } else {
-//      imageView.setImageResource(R.drawable.quora);
-//    }
+    String s = titles[position];
+    if (s.startsWith("Stack Overflow")) {
+      imageView.setImageResource(R.drawable.sof_black);
+    } else {
+      imageView.setImageResource(R.drawable.quora);
+    }
     
     
 

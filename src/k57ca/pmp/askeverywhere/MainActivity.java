@@ -15,7 +15,7 @@ package k57ca.pmp.askeverywhere;
 * limitations under the License.
 */
 
-import k57ca.pmp.askeverywhere.userendpoint.model.User;
+
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -31,17 +31,6 @@ public class MainActivity extends Activity {
    super.onCreate(savedInstanceState);
    setContentView(R.layout.activity_main);
    
-   User hoang = new User();
-   hoang.setEmail("tienhoangna@gmail.com");
-   hoang.setName("Hoang");
-   hoang.setUserId("H");
-   new AddUserToBackEnd(hoang).execute();
-   
-   User giap = new User();
-   giap.setEmail("giap@gmail.com");
-   giap.setName("Giap");
-   giap.setUserId("G");
-   new AddUserToBackEnd(giap).execute();
    
 
  }

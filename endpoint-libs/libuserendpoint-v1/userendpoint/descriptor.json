@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/userendpoint/v1/20140322061007/java/1.16.0-rc/pmp.k57ca-userendpoint-v1-20140322061007-java-1.16.0-rc-sources.jar", 
-      "path": "pmp.k57ca-userendpoint-v1-20140322061007-java-1.16.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/userendpoint/v1/20140322075739/java/1.16.0-rc/pmp.k57ca-userendpoint-v1-20140322075739-java-1.16.0-rc-sources.jar", 
+      "path": "pmp.k57ca-userendpoint-v1-20140322075739-java-1.16.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2014-03-22 06:10"
+      "timestamp": "2014-03-22 07:57"
     }, 
     {
-      "path": "pmp.k57ca-userendpoint-v1-20140322061007-java-1.16.0-rc.jar.properties", 
+      "path": "pmp.k57ca-userendpoint-v1-20140322075739-java-1.16.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -702,5 +702,5 @@
   "packagePath": "askeverywhere", 
   "language_version": "1.16.0-rc", 
   "id": "userendpoint:v1", 
-  "revision": 20140322061007
+  "revision": 20140322075739
 }

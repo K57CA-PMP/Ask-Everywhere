@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -22,6 +23,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
  
+@SuppressLint("NewApi")
 public class MainActivity extends ListActivity {
  
     private ProgressDialog pDialog;
@@ -64,16 +66,22 @@ public class MainActivity extends ListActivity {
         lv.setOnItemClickListener(new OnItemClickListener() {
  
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
+            public void onItemClick(AdapterView<?> parent, final View view,
                     int position, long id) {
                 // getting values from selected ListItem
-                String name = ((TextView) view.findViewById(R.id.name))
+                String title = ((TextView) view.findViewById(R.id.title))
                         .getText().toString();
-                String cost = ((TextView) view.findViewById(R.id.email))
+                String description = ((TextView) view.findViewById(R.id.label))
                         .getText().toString();
-                String description = ((TextView) view.findViewById(R.id.mobile))
-                        .getText().toString();
- 
+  	    	  view.animate().setDuration(1000).alpha(0).withEndAction(new Runnable() {
+	              @Override
+	              public void run() {
+//	                list.remove(item);
+//	                adapter.notifyDataSetChanged();
+	                view.setAlpha(1);
+	              }
+	          });
+                Log.d(title, description);
             }
         });
  

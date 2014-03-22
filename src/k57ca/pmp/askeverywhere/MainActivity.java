@@ -30,18 +30,6 @@ public class MainActivity extends ListActivity {
  
     // URL to get contacts JSON
     private static String url = "http://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=withBody";
- 
-    // JSON Node names
-    private static final String TAG_CONTACTS = "contacts";
-    private static final String TAG_ID = "id";
-    private static final String TAG_NAME = "name";
-    private static final String TAG_EMAIL = "email";
-    private static final String TAG_ADDRESS = "address";
-    private static final String TAG_GENDER = "gender";
-    private static final String TAG_PHONE = "phone";
-    private static final String TAG_PHONE_MOBILE = "mobile";
-    private static final String TAG_PHONE_HOME = "home";
-    private static final String TAG_PHONE_OFFICE = "office";
     
     private static final String TAG_ITEMS = "items";
     private static final String TAG_TITLE = "title";
@@ -56,6 +44,7 @@ public class MainActivity extends ListActivity {
     
     public static String[] titles = new String[30];
     public static String[] bodies = new String[30];
+    public static int[] icons = new int[30];
     int index = 0;
  
     @Override
@@ -104,13 +93,11 @@ public class MainActivity extends ListActivity {
                     for (int i = 0; i < items.length(); i++) {
                         JSONObject q = items.getJSONObject(i);
                          
-                        String title = q.getString(TAG_TITLE);
-                        String link = q.getString(TAG_LINK);
-                        String body = q.getString(TAG_BODY);
-                        titles[index] = title;
-                        bodies[index] = body;
+                        titles[index] = q.getString(TAG_TITLE);
+                        bodies[index] = q.getString(TAG_BODY);
+                        icons[index] = (int)(Math.random() * 2) + 1;
                         
-                        Log.d(title, body);
+                        Log.d(titles[index], bodies[index]);
                         
                         index++;
                     }

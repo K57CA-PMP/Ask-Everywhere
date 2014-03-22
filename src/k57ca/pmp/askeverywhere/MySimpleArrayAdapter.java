@@ -13,6 +13,7 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
   private final Context context;
   private final String[] titles;
   private final String[] bodies = MainActivity.bodies;
+  private final int[] icons = MainActivity.icons;
 
   public MySimpleArrayAdapter(Context context, String[] titles) {
     super(context, R.layout.question, titles);
@@ -31,8 +32,7 @@ public class MySimpleArrayAdapter extends ArrayAdapter<String> {
     title.setText(titles[position]);
     body.setText(Html.fromHtml(bodies[position]));
     // random icon
-    int x = (int)(Math.random() * 2) + 1;;
-    if (x == 1) {
+    if (icons[position] == 1) {
       imageView.setImageResource(R.drawable.sof_black);
     } else {
       imageView.setImageResource(R.drawable.quora);

@@ -22,8 +22,7 @@ public class LogInActivity extends Activity {
 			
 			public void onClick(View view) {
 				// TODO Auto-generated method stub	
-				Intent intent = new Intent(view.getContext(), AuthActivity.class);
-				startActivity(intent);
+				IntentsUtils.LogInGoogle(LogInActivity.this);
 			}
 		});
 	}

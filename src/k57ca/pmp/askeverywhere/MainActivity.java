@@ -26,50 +26,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.os.Build;
 
-public class MainActivity extends Activity {
-
-	private AuthPreferences authPreferences;
-	private AccountManager accountManager;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);			
-		if (authPreferences.getUser() != null
-				&& authPreferences.getToken() != null){			
-		} else
-			{
-			startActivity(new Intent(this, LogInActivity.class));
-		}
-	}	
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-}
-=======
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
- 
 @SuppressLint("NewApi")
 public class MainActivity extends ListActivity {
  
@@ -98,6 +54,8 @@ public class MainActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        IntentsUtils.LogIn(this);
  
         // Calling async task to get json
         new GetQuestions().execute();
@@ -175,7 +133,7 @@ public class MainActivity extends ListActivity {
     	super.onCreateOptionsMenu(menu);
 		int base = Menu.FIRST;
 		MenuItem search = menu.add(base, 1, 1, "Newsfeed");
-//		MenuItem addQuestion = menu.add(base, 2, 2, "Add question");
+		MenuItem login = menu.add(base, 2, 2, "Login");
 //		MenuItem help = menu.add(base, 3, 3, "Help");
         return true;
     }
@@ -190,6 +148,7 @@ public class MainActivity extends ListActivity {
         	IntentsUtils.newsfeed(this);
         	break;
         case 2:
+        	IntentsUtils.LogIn(this);
         	break;
         case 3:
         	break;

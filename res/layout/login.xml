@@ -2,19 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/blue"
-    >       
+    android:background="@color/navy"
+    android:orientation="vertical" >
     
     <Button
         android:id="@+id/log_in_with_google"
-        android:layout_width="wrap_content"
+        android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="200dp"
-        android:text="@+string/Log_in_with_Google"
-        android:background="@color/red"
-        android:textColor="@color/white"
-        ></Button>
+        android:background="@drawable/login"
+        android:textColor="@color/white" >
+</Button>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:background="@color/olive"
+        android:text="Term of service" />
 
 </LinearLayout>

@@ -15,4 +15,9 @@ public class IntentsUtils {
 		intent.setData(Uri.parse("http://www.google.com.vn")); 
 		activity.startActivity(intent); 
 	}
+	
+	public static void userProfile(Activity activity) {
+		Intent intent = new Intent(activity, UserProfileActivity.class);
+		activity.startActivity(intent); 
+	}
 }

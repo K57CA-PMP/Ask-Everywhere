@@ -84,6 +84,7 @@ public class Newsfeed extends Activity
     	ImageView icon = (ImageView) findViewById(R.id.icon);
     	switch (position) {
     	case 0:
+    		IntentsUtils.userProfile(this);
     		break;
     	case 1:
     		for (int i = 0; i < 30; i++) {

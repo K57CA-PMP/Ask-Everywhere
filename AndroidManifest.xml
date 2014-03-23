@@ -43,6 +43,7 @@
             android:name="k57ca.pmp.askeverywhere.AddMoreAccount"
             android:label="@string/title_activity_add_more_account" >
         </activity>
+
         <activity
             android:name="k57ca.pmp.askeverywhere.FacebookLogIn"
             android:label="@string/title_activity_facebook_log_in" >
@@ -54,6 +55,10 @@
         <activity
             android:name="k57ca.pmp.askeverywhere.Newsfeed"
             android:label="@string/title_activity_newsfeed" >
+        </activity>
+       <activity
+            android:name="k57ca.pmp.askeverywhere.AnswerActivity"
+            android:label="@string/title_activity_answer" >
         </activity>
 
         <!-- Single List Item Activity -->

@@ -9,6 +9,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -64,14 +65,15 @@ public class Newsfeed extends Activity
 
 	      @Override
 	      public void onItemClick(AdapterView<?> parent, final View view,
-	          int position, long id) {
+	          final int position, long id) {
 	    	  final String item = (String) parent.getItemAtPosition(position);
-	    	  view.animate().setDuration(1000).alpha(0).withEndAction(new Runnable() {
+	    	  view.animate().setDuration(2000).alpha(0).withEndAction(new Runnable() {
 	              @Override
 	              public void run() {
 	                list.remove(item);
-	                adapter.notifyDataSetChanged();
 	                view.setAlpha(1);
+	                IntentsUtils.startAnswerActivity(Newsfeed.this, position);
+	                Log.i("Open question", "Question " + Integer.toString(position) + " opened");
 	              }
 	          });
 	      }

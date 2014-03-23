@@ -84,7 +84,7 @@ public class MainActivity extends ListActivity {
                     // looping through All Contacts
                     for (int i = 0; i < items.length(); i++) {
                         JSONObject q = items.getJSONObject(i);
-                         
+                       
                         titles[index] = q.getString(TAG_TITLE);
                         bodies[index] = q.getString(TAG_BODY);
                         icons[index] = (int)(Math.random() * 2) + 1;

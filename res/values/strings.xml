@@ -19,9 +19,13 @@
     <string name="quora">Quora</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_question">Question</string>
+    <string name="title_answer">Answer</string>
+    <string name="title_activity_answer">AnswerActivity</string>
     <string name="user_name">Wayne Rooney</string>
     <string name="user_email">rooney@gmail.com</string>
     <string name="answers_act">You have answered 25 questions</string>
     <string name="questions_act">You have asked 14 questions</string>
+
 
 </resources>
